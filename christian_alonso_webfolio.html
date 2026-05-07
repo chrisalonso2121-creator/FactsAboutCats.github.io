@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christian Alonso | Webfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c1220;
+      --bg2: #111827;
+      --surface: #1a2235;
+      --surface2: #1f2d44;
+      --text: #e8edf5;
+      --text-muted: #7b91b0;
+      --accent: #4e9eff;
+      --accent2: #38d9a9;
+      --border: rgba(255,255,255,0.08);
+      --max: 900px;
+      --r: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(12,18,32,0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto;
+      padding: 14px 28px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    }
+    .brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem; color: var(--text);
+    }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .nav-links a {
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--text-muted); transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* HERO */
+    .hero {
+      position: relative; overflow: hidden;
+      padding: 110px 28px 90px;
+      text-align: center;
+      background: linear-gradient(160deg, #0c1220 0%, #0e1e38 55%, #0c2b40 100%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 30%, rgba(78,158,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent2); border: 1px solid rgba(56,217,169,0.3);
+      padding: 5px 14px; border-radius: 20px; margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.1; margin-bottom: 18px;
+      background: linear-gradient(135deg, #e8edf5 40%, #4e9eff 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.08rem; color: var(--text-muted);
+      max-width: 560px; margin: 0 auto 32px;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--accent); color: #fff;
+      padding: 12px 26px; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn:hover { opacity: .88; transform: translateY(-1px); text-decoration: none; }
+    .btn.outline {
+      background: transparent;
+      border: 1px solid var(--accent); color: var(--accent);
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: var(--max); margin: 0 auto;
+      padding: 70px 28px 24px;
+      scroll-margin-top: 70px;
+    }
+    .sec-head { margin-bottom: 30px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .sec-head h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem; color: var(--text); margin-bottom: 5px;
+    }
+    .sec-head p { font-size: 0.95rem; color: var(--text-muted); }
+
+    p { margin-bottom: 14px; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+    h4 {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--text-muted); margin: 22px 0 10px;
+    }
+
+    /* CARD */
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 24px; margin: 14px 0;
+    }
+    .placeholder {
+      background: rgba(78,158,255,0.06);
+      border: 1px dashed rgba(78,158,255,0.3);
+      border-radius: var(--r); padding: 16px 20px;
+      color: var(--text-muted); font-size: 0.93rem; margin: 14px 0;
+    }
+
+    /* RESUME */
+    .resume-block { padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .resume-block:last-child { border-bottom: none; }
+    .resume-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+    .resume-row .role { font-weight: 600; }
+    .resume-row .date, .resume-row .place { font-size: 0.9rem; color: var(--text-muted); }
+    .skills-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin-top: 8px; }
+    .skills-list li {
+      background: var(--surface2); border: 1px solid var(--border);
+      padding: 5px 13px; border-radius: 20px;
+      font-size: 0.88rem; color: var(--text-muted);
+    }
+
+    /* BLOG GRID */
+    .blog-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px; margin-top: 20px;
+    }
+    .blog-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 20px;
+      transition: border-color .2s, transform .2s;
+    }
+    .blog-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .blog-card h4 {
+      text-transform: none; letter-spacing: 0; font-size: 1rem;
+      color: var(--text); margin-bottom: 8px;
+    }
+    .blog-card p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
+    .post-num {
+      font-size: 0.75rem; color: var(--accent2); font-weight: 600;
+      letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px;
+    }
+
+    /* WORKS CITED */
+    .works-cited { padding-left: 24px; text-indent: -24px; font-size: 0.93rem; color: var(--text-muted); }
+    .works-cited p { margin-bottom: 10px; }
+
+    /* EMBED */
+    .embed-wrap {
+      position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+      border-radius: var(--r); border: 1px solid var(--border);
+      background: var(--surface); margin-top: 10px;
+    }
+    .embed-wrap iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted); font-size: 0.88rem; margin-top: 60px;
+    }
+    footer a { color: var(--accent); }
+
+    @media (max-width:580px) {
+      .nav-links { gap: 12px; }
+      section { padding: 48px 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">Christian Alonso</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#extended-definition">Definition</a>
+      <a href="#proposal">Proposal</a>
+      <a href="#presentation">Presentation</a>
+      <a href="#blog">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<header id="home" class="hero">
+  <div class="hero-tag">ENGL-2311 · Spring 2026</div>
+  <h1>Christian Alonso</h1>
+  <p>A professional webfolio showcasing writing, research, and projects in technical and professional communication.</p>
+  <a href="#about" class="btn">Explore the Webfolio</a>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-head">
+    <h2>About Me</h2>
+    <p>Who I am and the purpose of this webfolio.</p>
+  </div>
+  <p>Hello, my name is <strong>Christian Alonso</strong>. I am 18 years old and currently attending Tarrant County College, with plans to transfer to UTA and major in computer science. Outside of school, my biggest interests are cats, music, and cars. Ever since I was a kid I have always preferred cats over dogs — though I do own three dogs and love them too. Music is another constant for me; I rarely go a day without listening to something. Lastly, I love cars, and I am proud to own a Nissan 350z, a car I have looked up to since I was a kid.</p>
+  <h3>Purpose of this Webfolio</h3>
+  <p>This webfolio is the professional version of my work for ENGL-2311. The goal is to bring all of my major projects from the semester into one place so that visitors can see how I have developed as a writer and communicator. The intended audience is my professor, future employers, classmates, and anyone interested in viewing my work in technical and professional writing.</p>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="sec-head">
+    <h2>Resume</h2>
+    <p>Education, experience, and skills.</p>
+  </div>
+  <div class="resume-block">
+    <h4>Contact</h4>
+    <p><strong>Christian Alonso</strong><br>Fort Worth, TX<br><span style="color:var(--text-muted)">[your email] · [your phone]</span></p>
+  </div>
+  <div class="resume-block">
+    <h4>Education</h4>
+    <div class="resume-row">
+      <div>
+        <div class="role">Tarrant County College</div>
+        <div class="place">Associate of Science (in progress)</div>
+      </div>
+      <div class="date">Expected 2027</div>
+    </div>
+    <p style="margin-top:8px;">Planning to transfer to The University of Texas at Arlington to pursue a Bachelor of Science in Computer Science.</p>
+  </div>
+  <div class="resume-block">
+    <h4>Experience</h4>
+    <div class="placeholder"><strong>Add your work experience here.</strong> For each role, include job title, employer, dates, and 2–4 bullet points describing responsibilities and accomplishments.</div>
+  </div>
+  <div class="resume-block">
+    <h4>Skills</h4>
+    <ul class="skills-list">
+      <li>Technical Writing</li><li>Professional Communication</li>
+      <li>MLA Citation</li><li>Research</li>
+      <li>Editing &amp; Revision</li><li>Google Workspace</li>
+      <li>Microsoft Office</li><li>Beginner Programming</li>
+    </ul>
+  </div>
+  <div class="resume-block">
+    <h4>Projects (this semester)</h4>
+    <p>Extended Definition Essay · Proposal · Persuasive Letter · Resume · Blog (Facts About Cats) · Presentation</p>
+  </div>
+</section>
+
+<!-- EXTENDED DEFINITION -->
+<section id="extended-definition">
+  <div class="sec-head">
+    <h2>Extended Definition</h2>
+    <p>An in-depth definition essay written for a specific audience.</p>
+  </div>
+  <p>This assignment asked me to take a complex term, idea, or process and explain it clearly and thoroughly for a chosen audience using description, examples, comparison/contrast, and outside research.</p>
+  <div class="placeholder"><strong>Paste the full text of your Extended Definition essay here.</strong> Use &lt;p&gt;…&lt;/p&gt; for each paragraph and add in-text citations where you reference outside sources, e.g., (Smith 12).</div>
+  <h3>Works Cited</h3>
+  <div class="works-cited">
+    <p><em>Replace these example entries with your actual MLA citations.</em></p>
+    <p>Author Last Name, First Name. "Title of Article." <em>Title of Source</em>, Publisher, Date, URL.</p>
+    <p>Author Last Name, First Name. <em>Title of Book</em>. Publisher, Year.</p>
+  </div>
+</section>
+
+<!-- PROPOSAL -->
+<section id="proposal">
+  <div class="sec-head">
+    <h2>Proposal</h2>
+    <p>Identifying a problem and presenting a solution.</p>
+  </div>
+  <p>This proposal identifies a specific problem, presents a researched solution, and explains the steps, resources, and reasoning needed to implement that solution. It was written for an audience that has the ability to act on the recommendation.</p>
+  <div class="placeholder"><strong>Paste the full text of your Proposal here.</strong> Recommended sections: Introduction, Statement of Problem, Proposed Solution, Implementation Plan, Costs / Resources, Conclusion.</div>
+  <h3>Works Cited</h3>
+  <div class="works-cited">
+    <p><em>Replace these example entries with your actual MLA citations.</em></p>
+    <p>Author Last Name, First Name. "Title of Article." <em>Title of Source</em>, Publisher, Date, URL.</p>
+  </div>
+</section>
+
+<!-- PRESENTATION -->
+<section id="presentation">
+  <div class="sec-head">
+    <h2>Presentation</h2>
+    <p>A visual summary of one of my major projects.</p>
+  </div>
+  <p>The presentation distills the core ideas of one of my semester projects into a visual, easy-to-follow format suitable for an audience seeing the material for the first time.</p>
+  <div class="placeholder"><strong>Embed your Google Slides here.</strong> In Slides, go to <em>File → Share → Publish to web → Embed</em>, then copy the &lt;iframe&gt; code and replace the example below.</div>
+  <div class="embed-wrap">
+    <iframe src="about:blank" title="Presentation" allowfullscreen></iframe>
+  </div>
+  <p style="font-size:0.88rem;color:var(--text-muted);margin-top:10px;">Replace <code>about:blank</code> with your published Google Slides URL.</p>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="sec-head">
+    <h2>Blog · Facts About Cats</h2>
+    <p>Five posts exploring the history, behavior, and science of domestic cats.</p>
+  </div>
+  <p>My complete blog for ENGL-2311 is hosted on Google Sites. It includes five researched posts plus an About section that defines the audience and purpose of the blog. Each post follows MLA citation conventions.</p>
+  <p style="margin:20px 0 28px;">
+    <a class="btn" href="https://sites.google.com/view/factsaboutcatschristian" target="_blank" rel="noopener">Visit the Full Blog →</a>
+  </p>
+  <h3>Posts</h3>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="post-num">Post 01</div>
+      <h4>The Beginning of the Friendship</h4>
+      <p>How cats and humans first formed a bond around 9,500 years ago through agriculture and rodent control.</p>
+    </div>
+    <div class="blog-card">
+      <div class="post-num">Post 02</div>
+      <h4>Cats Through Different Eyes</h4>
+      <p>How cats have been viewed in different cultures and religions, from Ancient Egypt to Japanese maneki neko.</p>
+    </div>
+    <div class="blog-card">
+      <div class="post-num">Post 03</div>
+      <h4>The Evolution of Cats</h4>
+      <p>The journey of cats from the ancient Felidae family to the domestic companions we know today.</p>
+    </div>
+    <div class="blog-card">
+      <div class="post-num">Post 04</div>
+      <h4>What Your Cat Is Really Doing</h4>
+      <p>The science behind kneading, gift-giving, and chattering — quirks rooted in wild predator instincts.</p>
+    </div>
+    <div class="blog-card">
+      <div class="post-num">Post 05</div>
+      <h4>The Meaning Behind Your Cat's Purr</h4>
+      <p>Why cats purr, what it communicates, and the surprising healing benefits for both cats and humans.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Christian Alonso · Built for ENGL-2311 · <a href="#home">Back to top ↑</a></p>
+</footer>
+
+</body>
+</html>
